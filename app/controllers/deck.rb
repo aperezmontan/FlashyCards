@@ -26,6 +26,13 @@ put '/deck/:deckid/edit' do
   redirect "/deck_select"
 end
 
+delete '/deck/:deckid/edit' do
+  deck_delete = Deck.find_by(id: params[:deckid])
+  deck_delete.cards.destroy_all
+  deck_delete.destroy
+  redirect "/deck_select"
+end
+
 get '/deck/edit' do
   if current_user
     all_decks = Deck.where(user_id: current_user.id)

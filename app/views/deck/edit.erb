@@ -15,6 +15,11 @@
      <input class='button' type='submit' value='Edit'/>
  </div>
 </form>
+ <form action='/deck/<%= deck_id %>/edit' method='post'>
+                  <input type='hidden' name='_method' value='delete'/>
+                  <div>
+                  <input class='button' type='submit' value='Delete'/>
+</div>
 </div>
 </div>
 </div>
@@ -22,3 +27,4 @@
 
 
 </div>
+
