@@ -1,0 +1,71 @@
+<link rel="stylesheet" href="/css/deckgrid.css">
+
+<script src="/js/masonry.js"></script>
+
+
+</div>
+<%if deck_select %>
+  <h4 style="color:#c0392b;text-align:center;margin-top:20px">DECK NOT SAVED</h4>
+<%end%>
+<%if params[:round_over]%>
+  <h4 style="color:#c0392b;text-align:center;margin-top:20px">Your round is OVER</h4>
+<%end%>
+<div class="intro-div">
+<div class="flash-div">
+
+
+
+<div class="animated fadeInDown" id="this">
+<a class="flash2" href="">CHOOSE A DECK</a>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+<div id="container"class="js-masonry" data-masonry-options='{ "columnWidth": 10, "itemSelector": ".square" }'>
+
+
+
+<% all_decks.each do |deck| %>
+<div class="slider">
+<div class="animated slideInRight">
+<% if deck.id == 1  %>
+
+<a class= "deckname" href="/deck/new">
+  <div class="square">
+    <div class="content">
+        <div class="table">
+            <div class="table-cell">
+                <ul><%= deck.name %></ul>
+            </div>
+        </div>
+    </div>
+  </div>
+</a>
+<% else %>
+<a class= "deckname" href="/card/<%=deck.card_ids.sample%>?current_deck_id=<%=deck.id%>">
+  <div class="square">
+    <div class="content">
+        <div class="table">
+            <div class="table-cell">
+                <ul><%= deck.name %></ul>
+                <ul class="perc"><%=get_average(deck)%></ul>
+            </div>
+        </div>
+    </div>
+  </div>
+</a>
+<% end %>
+  </div>
+ </div>
+
+
+<%end%>
+
+
