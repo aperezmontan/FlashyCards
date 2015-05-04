@@ -6,6 +6,8 @@ def current_user
   end
 end
 
+
+#ZM: All of these should be in the model
 def check_answer(guess,card,answer)
   if card.answer == answer
     guess.result = true
