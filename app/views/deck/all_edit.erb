@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="/css/deckgrid.css">
+
+<script src="/js/masonry.js"></script>
+
+
+</div>
+<div class="intro-div">
+<div class="flash-div">
+
+
+
+<div class="animated fadeInDown" id="this">
+  <% if all_decks.count == 0%>
+  <a class="flash2" href="">NO DECKS TO EDIT</a>
+  <div>
+    <!-- <p><a href="/deck_select" margin: auto>Back</a></p> -->
+  </div>
+  <%else%>
+<a class="flash2" href="">CHOOSE A DECK</a>
+<%end%>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+<div id="container"class="js-masonry" data-masonry-options='{ "columnWidth": 10, "itemSelector": ".square" }'>
+
+
+
+<% all_decks.each do |deck| %>
+<div class="slider">
+<div class="animated slideInRight">
+<a class= "deckname" href="/deck/<%=deck.id%>/edit">
+  <div class="square">
+    <div class="content">
+        <div class="table">
+            <div class="table-cell">
+                <ul><%= deck.name %></ul>
+            </div>
+        </div>
+    </div>
+  </div>
+</a>
+  </div>
+ </div>
+
+
+<%end%>

@@ -63,8 +63,8 @@ $(document).ready(function() {
 $( "#give_answer" ).submit(function(e) {
   $('#flipper').addClass('animated flip');
   var reason = "";
-  var val = document.getElementById("box").value
-  var ans = document.getElementById("ANS").innerHTML
+  var val = document.getElementById("box").value.toLowerCase();
+  var ans = document.getElementById("ANS").innerHTML.toLowerCase();
   reason += val
   if(val == ans) {
     $("#rightA").show();
