@@ -9,7 +9,7 @@ get '/card/:card_id' do
     end
     card_array = deck.card_ids - guessed_cards
     p card_array
-    if card_array.length == 0
+    if card_array.length == 0 || guessed_cards.count > 9
       round.update_attributes(live: 'false')
       redirect "/deck_select?round_over=true"
     end

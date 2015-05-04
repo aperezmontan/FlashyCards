@@ -30,6 +30,12 @@ get '/deck_select' do
   if current_user
     all_decks = Deck.all
     last_deck = all_decks.last
+    live_rounds = Round.where(live:true, user_id: current_user.id).count
+    while live_rounds > 0
+      round = Round.find_by(live:true, user_id: current_user.id)
+      round.update_attributes(live: false)
+      live_rounds = Round.where(live:true, user_id: current_user.id).count
+    end
     if last_deck.cards.count < 5
       last_deck.cards.destroy_all
       last_deck.destroy
