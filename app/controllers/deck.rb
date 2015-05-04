@@ -33,6 +33,7 @@ put '/deck/:deckid/edit' do
   redirect "/deck_select"
 end
 
+#AF: Remove the word edit in the route... delete '/deck/:deck_id' do
 delete '/deck/:deckid/edit' do
   deck_delete = Deck.find_by(id: params[:deckid])
   deck_delete.cards.destroy_all
@@ -40,8 +41,11 @@ delete '/deck/:deckid/edit' do
   redirect "/deck_select"
 end
 
+#AF: get 'user/:user_id/decks'
 get '/deck/edit' do
   if current_user
+
+    #AF: current_user.decks
     all_decks = Deck.where(user_id: current_user.id)
     erb :"deck/all_edit", locals: {all_decks: all_decks}
   else
@@ -55,6 +59,7 @@ get '/deck_select' do
   if current_user
     all_decks = Deck.all
     last_deck = all_decks.last
+    #AF: current_user.rounds.where(live: true)
     live_rounds = Round.where(live:true, user_id: current_user.id).count
 
     #ZM: This logic belongds somewhere else... Maybe  a game Model?

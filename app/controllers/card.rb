@@ -8,11 +8,13 @@ get '/card/:card_id' do
     guessed_cards = []
 
     deck = Deck.find(params[:current_deck_id])
+
+    #AF: Depricated... 
+    #AF: Round.where(critera).first_or_create
     round = Round.find_or_create_by(live: true, deck_id: params[:current_deck_id], user_id: current_user.id)
    
     #ZM: This is a pretty messy, could be made more simple by using a select, or pluck statement.
     #guessed_cards = Guess.where(id: round.guess_ids).pluck(:card_id)
-    
     Guess.where(id: round.guess_ids).each do |guess|
       guessed_cards << guess.card_id
       #ZM: Do not leave debug statements in your code.
@@ -33,6 +35,7 @@ get '/card/:card_id' do
     flash_card = Card.find(card_array.sample)
 
     #ZM: You should not need the .all.count here
+    #AF: round.guesses.count || round.guesses.lenght
     guesses = round.guesses.all.count
     correct = 0
    
