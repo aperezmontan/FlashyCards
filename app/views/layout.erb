@@ -27,15 +27,13 @@
       <div class="darksection">
 
 
-        <a href="/logout">Logout</a> <a href="/">Home</a>
+        <a href="/logout">Logout <%= current_user.name %></a> <a href="/deck_select">Home</a>
         </div>
         <% else %>
         <div class="darksection" style="opacity:0;">
-        <a href="/logout">Logout</a> <a href="/">Home</a>
+        <a href="/logout">Logout </a> <a href="/deck_select">Home</a>
 
         </div>
-
-
       <% end %>
   </header>
   <%= yield %>
