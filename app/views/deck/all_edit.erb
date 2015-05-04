@@ -4,19 +4,20 @@
 
 
 </div>
-<%if deck_select %>
-  <h4 style="color:#c0392b;text-align:center;margin-top:20px">DECK NOT SAVED</h4>
-<%end%>
-<%if params[:round_over]%>
-  <h4 style="color:#c0392b;text-align:center;margin-top:20px">Your round is OVER</h4>
-<%end%>
 <div class="intro-div">
 <div class="flash-div">
 
 
 
 <div class="animated fadeInDown" id="this">
+  <% if all_decks.count == 0%>
+  <a class="flash2" href="">NO DECKS TO EDIT</a>
+  <div>
+    <!-- <p><a href="/deck_select" margin: auto>Back</a></p> -->
+  </div>
+  <%else%>
 <a class="flash2" href="">CHOOSE A DECK</a>
+<%end%>
 </div>
 
 
@@ -35,21 +36,7 @@
 <% all_decks.each do |deck| %>
 <div class="slider">
 <div class="animated slideInRight">
-<% if deck.id == 1  %>
-
-<a class= "deckname" href="/deck/new">
-  <div class="square">
-    <div class="content">
-        <div class="table">
-            <div class="table-cell">
-                <ul><%= deck.name %></ul>
-            </div>
-        </div>
-    </div>
-  </div>
-</a>
-<% else %>
-<a class= "deckname" href="/card/<%=deck.card_ids.sample%>?current_deck_id=<%=deck.id%>">
+<a class= "deckname" href="/deck/<%=deck.id%>/edit">
   <div class="square">
     <div class="content">
         <div class="table">
@@ -61,15 +48,8 @@
     </div>
   </div>
 </a>
-<% end %>
   </div>
  </div>
 
 
 <%end%>
-
-</div>
-<a href="deck/edit" margin: auto>Click here to edit your decks</a>
-</div>
-
-

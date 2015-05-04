@@ -34,11 +34,7 @@
     display:table-cell;
     vertical-align:middle;
     border-radius: 18px;
-<<<<<<< HEAD
-  transition: all 0.9s ease;
-=======
   transition: all 1.8s ease;
->>>>>>> 148f2b64ee6bbeeccf9114ed512f0cc12fe2f6f5
 
 }
 
@@ -105,7 +101,6 @@ text-align: center;
 
 }
 
-<<<<<<< HEAD
 .js-masonry {
 width:90%;
 margin-left:8%;
@@ -120,18 +115,7 @@ margin-left:8%;
   color:#27ae60;
 }
 
-=======
-.cardsurface {
-width:90%;
-margin-left:8%;
-
+.center {
+  margin-top: 15px;
+  text-align:center;
 }
-
-.table-cell ul {
-  font-size: 1.5em;
-}
-
-.perc {
-  color:#27ae60;
-}
->>>>>>> 148f2b64ee6bbeeccf9114ed512f0cc12fe2f6f5

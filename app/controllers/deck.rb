@@ -14,7 +14,7 @@ end
 get '/deck/:deckid/edit' do
   if current_user
     deck = Deck.find_by(id: params[:deckid])
-    erb :"deck/edit", locals: {deck_id: params[:deck_id], deck_name: deck.name }
+    erb :"deck/edit", locals: {deck_id: params[:deckid], deck_name: deck.name }
   else
     redirect '/'
   end
@@ -22,8 +22,17 @@ end
 
 put '/deck/:deckid/edit' do
   value = Deck.find_by(id: params[:deckid])
-  value = Deck.update_attributes( name: params[:name])
+  value.update_attributes( name: params[:name])
   redirect "/deck_select"
+end
+
+get '/deck/edit' do
+  if current_user
+    all_decks = Deck.where(user_id: current_user.id)
+    erb :"deck/all_edit", locals: {all_decks: all_decks}
+  else
+    redirect '/'
+  end
 end
 
 get '/deck_select' do
